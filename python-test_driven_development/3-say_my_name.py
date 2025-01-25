@@ -1,30 +1,29 @@
 #!/usr/bin/python3
-def print_square(size):
+"""
+This module defines a function to print a formatted name.
+"""
+
+
+def say_my_name(first_name, last_name=""):
     """
-    Prints a square with the character '#'.
+    Prints "My name is <first_name> <last_name>".
 
     Args:
-        size (int): The size of the square's sides.
+        first_name (str): The first name of the person.
+        last_name (str, optional): The last name of the person. Defaults to an empty string.
 
     Raises:
-        TypeError: If size is not an integer.
-        ValueError: If size is less than 0.
+        TypeError: If first_name or last_name is not a string.
 
     Example:
-        >>> print_square(4)
-        ####
-        ####
-        ####
-        ####
+        >>> say_my_name("John", "Doe")
+        My name is John Doe
+        >>> say_my_name("Alice")
+        My name is Alice
     """
-    # Vérification que size est un entier
-    if not isinstance(size, int):
-        raise TypeError("size must be an integer")
+    if not isinstance(first_name, str):
+        raise TypeError("first_name must be a string")
+    if not isinstance(last_name, str):
+        raise TypeError("last_name must be a string")
 
-    # Vérification que size est >= 0
-    if size < 0:
-        raise ValueError("size must be >= 0")
-
-    # Imprime un carré de côté 'size' avec le caractère '#'
-    for _ in range(size):
-        print("#" * size)
+    print(f"My name is {first_name} {last_name}".strip())
