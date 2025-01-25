@@ -9,6 +9,7 @@
         TypeError: If text is not a string.
 """
 
+
 def text_indentation(text):
     """
     indenting a text
