@@ -1,18 +1,32 @@
 #!/usr/bin/python3
-def text_indentation(text):
+"""
+This module defines a function to print a square with the character '#'.
+"""
+
+
+def print_square(size):
     """
-    Prints a text with 2 new lines after '.', '?' and ':'.
+    Prints a square with the character '#'.
 
     Args:
-        text (str): The text to format.
+        size (int): The size length of the square's side.
 
     Raises:
-        TypeError: If text is not a string.
+        TypeError: If size is not an integer or is a float less than 0.
+        ValueError: If size is less than 0.
+
+    Example:
+        >>> print_square(3)
+        ###
+        ###
+        ###
     """
-    if not isinstance(text, str):
-        raise TypeError("text must be a string")
+    if not isinstance(size, int):
+        raise TypeError("size must be an integer")
+    if isinstance(size, float) and size < 0:
+        raise TypeError("size must be an integer")
+    if size < 0:
+        raise ValueError("size must be >= 0")
 
-    for char in ".:?":
-        text = text.replace(char, char + "\n\n")
-
-    print("\n".join(line.strip() for line in text.split("\n")), end="")
+    for _ in range(size):
+        print("#" * size)
