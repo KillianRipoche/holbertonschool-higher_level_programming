@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 class Square:
 
-    """ An empty square
+    """ An empty square we will define later
     avec
       plus
       de lignes
     """
 
     def __init__(self):
-        """ Initialisation """
+        """ Initialisation de square, pour le moment il est vide
+        """
         pass
