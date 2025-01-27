@@ -1,13 +1,7 @@
 #!/usr/bin/python3
+""" Create a new class, we'll define it later
+"""
 class Square:
-
-    """ An empty square we will define later
-    avec
-      plus
-      de lignes
+    """ an empty square, we will define it later too
     """
-
-    def __init__(self):
-        """ Initialisation de square, pour le moment il est vide
-        """
-        pass
+    pass
