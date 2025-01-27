@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 class Square:
 
-    # An empty square
+    """ An empty square"""
 
     def __init__(self):
-        # Initialisation 
+        """ Initialisation """
         pass
