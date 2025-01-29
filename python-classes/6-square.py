@@ -4,20 +4,21 @@
 
 
 class Square:
-    """this is a square with size and error
-    """
+    """define a square with a size and a position"""
 
     def __init__(self, size=0, position=(0, 0)):
-        self.__size = size
-        self.__position = position
+        """Initialize the square at 0 and the position too"""
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
-        """getter for size value"""
+        """get size of the square"""
         return self.__size
 
     @size.setter
     def size(self, value):
+        """change the size of teh square"""
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         if value < 0:
@@ -26,12 +27,12 @@ class Square:
 
     @property
     def position(self):
-        """ getter for position value"""
+        """get the position of the square"""
         return self.__position
 
     @position.setter
     def position(self, value):
-        """ Setter to modify the position """
+        """change the position of the square with value"""
         if (not isinstance(value, tuple) or len(value) != 2 or
             not all(isinstance(num, int) for num in value) or
                 not all(num >= 0 for num in value)):
@@ -39,10 +40,11 @@ class Square:
         self.__position = value
 
     def area(self):
-        return self.__size * self.__size
+        """return the area of the square"""
+        return self.__size ** 2
 
     def my_print(self):
-        """Affiche le carré avec le caractère '#' en prenant en compte la position"""
+        """Print the square with the good position"""
         if self.__size == 0:
             print()
             return
