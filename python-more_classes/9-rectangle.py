@@ -2,14 +2,14 @@
 class Rectangle:
     """Class that defines a rectangle with various methods and attributes."""
 
-    number_of_instances = 0  # Class attribute counting instances
-    print_symbol = "#"  # Symbol used for rectangle representation
+    number_of_instances = 0
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         """Initialize a rectangle with width and height."""
-        self.width = width  # Use the setter
-        self.height = height  # Use the setter
-        Rectangle.number_of_instances += 1  # Increment the instance counter
+        self.width = width
+        self.height = height
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
