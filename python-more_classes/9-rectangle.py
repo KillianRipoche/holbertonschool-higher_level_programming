@@ -8,7 +8,8 @@ class Rectangle:
     """Class that defines a rectangle with various methods and attributes."""
 
     number_of_instances = 0  # Class attribute counting instances
-    print_symbol = "#"  # Symbol used for rectangle representation (can be any type)
+    # Symbol used for rectangle representation (can be any type)
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
         """Initialize a rectangle with width and height."""
@@ -55,7 +56,7 @@ class Rectangle:
         return 2 * (self.width + self.height)
 
     def __str__(self):
-        """Return a string representation of the rectangle using print_symbol."""
+        """Return a string representation of the rectangle."""
         if self.width == 0 or self.height == 0:
             return ""
         return "\n".join(
@@ -63,17 +64,17 @@ class Rectangle:
         )
 
     def __repr__(self):
-        """Return a string representation that allows recreating an instance."""
+        """Return a string representation."""
         return f"Rectangle({self.width}, {self.height})"
 
     def __del__(self):
-        """Print a message when an instance is deleted and decrement the counter."""
+        """Print a message when an instance is deleted."""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
-        """Return the bigger rectangle based on the area."""
+        """Return the bigger rectangle."""
         if not isinstance(rect_1, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(rect_2, Rectangle):
@@ -82,5 +83,5 @@ class Rectangle:
 
     @classmethod
     def square(cls, size=0):
-        """Return a new Rectangle instance with width and height equal to size."""
+        """Return a new Rectangle."""
         return cls(size, size)
