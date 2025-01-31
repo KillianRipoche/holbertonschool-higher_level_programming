@@ -1,15 +1,20 @@
 #!/usr/bin/python3
+"""
+This module defines a Rectangle class with various attributes and methods.
+"""
+
+
 class Rectangle:
     """Class that defines a rectangle with various methods and attributes."""
 
-    number_of_instances = 0
-    print_symbol = "#"
+    number_of_instances = 0  # Class attribute counting instances
+    print_symbol = "#"  # Symbol used for rectangle representation (can be any type)
 
     def __init__(self, width=0, height=0):
         """Initialize a rectangle with width and height."""
-        self.width = width
-        self.height = height
-        Rectangle.number_of_instances += 1
+        self.width = width  # Use the setter
+        self.height = height  # Use the setter
+        Rectangle.number_of_instances += 1  # Increment the instance counter
 
     @property
     def width(self):
@@ -53,7 +58,9 @@ class Rectangle:
         """Return a string representation of the rectangle using print_symbol."""
         if self.width == 0 or self.height == 0:
             return ""
-        return "\n".join([str(self.print_symbol) * self.width for _ in range(self.height)])
+        return "\n".join(
+            [str(self.print_symbol) * self.width for _ in range(self.height)]
+        )
 
     def __repr__(self):
         """Return a string representation that allows recreating an instance."""
