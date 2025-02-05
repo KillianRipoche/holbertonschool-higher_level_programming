@@ -1,48 +1,43 @@
-The ``base_geometry`` module
-============================
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
-Using ``BaseGeometry``
----------------------
+Now test it:
 
-Importing the class from the module:
-    >>> BaseGeometry = __import__('base_geometry').BaseGeometry
-
-Testing area() method (should raise an exception)
     >>> bg = BaseGeometry()
+
+    >>> bg.integer_validator("my_int", 12)
+
+    >>> bg.integer_validator("width", 89)
+
+    >>> try:
+    ...     bg.integer_validator("name", "John")
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] name must be an integer
+
+    >>> try:
+    ...     bg.integer_validator("age", 0)
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [ValueError] age must be greater than 0
+
+    >>> try:
+    ...     bg.integer_validator("distance", -4)
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [ValueError] distance must be greater than 0
+
     >>> bg.area()
     Traceback (most recent call last):
-    ...
     Exception: area() is not implemented
 
-Testing integer_validator with valid input
-    >>> bg.integer_validator("width", 10)
-
-Testing integer_validator with zero (should raise an exception)
-    >>> bg.integer_validator("height", 0)
+    >>> bg.integer_validator("age")
     Traceback (most recent call last):
-    ...
-    ValueError: height must be greater than 0
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-Testing integer_validator with negative number (should raise an exception)
-    >>> bg.integer_validator("size", -5)
+    >>> bg.integer_validator()
     Traceback (most recent call last):
-    ...
-    ValueError: size must be greater than 0
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
-Testing integer_validator with non-integer input (string)
-    >>> bg.integer_validator("age", "ten")
+    >>> bg.integer_validator("age", [3])
     Traceback (most recent call last):
-    ...
     TypeError: age must be an integer
-
-Testing integer_validator with non-integer input (float)
-    >>> bg.integer_validator("length", 4.5)
-    Traceback (most recent call last):
-    ...
-    TypeError: length must be an integer
-
-Testing integer_validator with non-integer input (list)
-    >>> bg.integer_validator("count", [1, 2, 3])
-    Traceback (most recent call last):
-    ...
-    TypeError: count must be an integer
