@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This module defines a class BaseGeometry with a method that raises an exception.
+This module defines a class BaseGeometry with a method that raises
+an exception.
 """
 
 
