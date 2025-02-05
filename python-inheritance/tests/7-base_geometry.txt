@@ -1,0 +1,48 @@
+The ``base_geometry`` module
+============================
+
+Using ``BaseGeometry``
+---------------------
+
+Importing the class from the module:
+    >>> BaseGeometry = __import__('base_geometry').BaseGeometry
+
+Testing area() method (should raise an exception)
+    >>> bg = BaseGeometry()
+    >>> bg.area()
+    Traceback (most recent call last):
+    ...
+    Exception: area() is not implemented
+
+Testing integer_validator with valid input
+    >>> bg.integer_validator("width", 10)
+
+Testing integer_validator with zero (should raise an exception)
+    >>> bg.integer_validator("height", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: height must be greater than 0
+
+Testing integer_validator with negative number (should raise an exception)
+    >>> bg.integer_validator("size", -5)
+    Traceback (most recent call last):
+    ...
+    ValueError: size must be greater than 0
+
+Testing integer_validator with non-integer input (string)
+    >>> bg.integer_validator("age", "ten")
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+Testing integer_validator with non-integer input (float)
+    >>> bg.integer_validator("length", 4.5)
+    Traceback (most recent call last):
+    ...
+    TypeError: length must be an integer
+
+Testing integer_validator with non-integer input (list)
+    >>> bg.integer_validator("count", [1, 2, 3])
+    Traceback (most recent call last):
+    ...
+    TypeError: count must be an integer
