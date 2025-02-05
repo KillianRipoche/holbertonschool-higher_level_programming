@@ -33,7 +33,8 @@ class Rectangle(BaseGeometry):
 
     def __init__(self, width, height):
         """
-        Initializes a rectangle with width and height validated as positive integers.
+        Initializes a rectangle with width and height validated
+        as positive integers.
         """
         self.integer_validator("width", width)
         self.integer_validator("height", height)
