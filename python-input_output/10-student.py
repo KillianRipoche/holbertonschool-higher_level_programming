@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""com before the import for the checker"""
+
+
 class Student:
     """
     A student class for the checker

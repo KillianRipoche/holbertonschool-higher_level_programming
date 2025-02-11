@@ -5,16 +5,19 @@ import sys
 
 
 def save_to_json_file(my_obj, filename):
+    """json dump for checker"""
     with open(filename, 'w') as file:
         return json.dump(my_obj, file)
 
 
 def load_from_json_file(filename):
+    """json load"""
     with open(filename, encoding='utf-8') as file:
         return json.load(file)
 
 
 def add_args_to_json():
+    """add args, items etc"""
     try:
         my_list = load_from_json_file("add_item.json")
     except FileNotFoundError:

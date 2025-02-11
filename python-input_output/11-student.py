@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""com checker"""
+
+
 class Student:
     """
     A student class for the checker

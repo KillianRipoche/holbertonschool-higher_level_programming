@@ -4,4 +4,5 @@ import json
 
 
 def to_json_string(my_obj):
+    """json and com for the checker"""
     return json.dumps(my_obj)
