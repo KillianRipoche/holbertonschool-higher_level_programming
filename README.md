@@ -53,10 +53,15 @@ BaseModel --|> User : Inheritance
 BaseModel --|> Place : Inheritance
 BaseModel --|> Amenity : Inheritance
 BaseModel --|> Review : Inheritance
+linkStyle 0,1,2,3 stroke:#800080,stroke-width:3px;
+
 Place <.. Amenity : Dependency
+linkStyle 4 stroke:#FFA500,stroke-width:3px;
+
 Place <--> Review : Association
 User <--> Review : Association
 User <--> Place : Association
+linkStyle 5,6,7 stroke:#0000FF,stroke-width:3px;
 
 style BaseModel fill:#d3d3d3,stroke:#000,stroke-width:2px;
 style User fill:#ADD8E6,stroke:#000,stroke-width:2px;
