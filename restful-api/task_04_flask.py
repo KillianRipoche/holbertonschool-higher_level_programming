@@ -1,22 +1,10 @@
 #!/usr/bin/env python3
+
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-users = {
-    "jane": {
-        "username": "jane",
-        "name": "Jane",
-        "age": 28,
-        "city": "Los Angeles"
-    },
-    "john": {
-        "username": "john",
-        "name": "John",
-        "age": 30,
-        "city": "New York"
-    }
-}
+users = {}
 
 
 @app.route("/")
@@ -43,23 +31,21 @@ def get_user(username):
         return jsonify({"error": "User not found"}), 404
 
 
-@app.route("/add_user", methods=["POST"])
+@app.route('/add_user', methods=['POST'])
 def add_user():
-    if not request.is_json:
-        return jsonify({"error": "Request must be JSON"}), 400
-
-    user_data = request.get_json()
-
-    if "username" not in user_data:
+    new_user = request.get_json()
+    if 'username' not in new_user:
         return jsonify({"error": "Username is required"}), 400
-
-    username = user_data["username"]
-
-    users[username] = user_data
-
+    username = new_user['username']
+    users[username] = {
+        "username": new_user.get('username'),
+        "name": new_user.get('name'),
+        "age": new_user.get('age'),
+        "city": new_user.get('city')
+    }
     return jsonify({
         "message": "User added",
-        "user": user_data
+        "user": users[username]
     }), 201
 
 
