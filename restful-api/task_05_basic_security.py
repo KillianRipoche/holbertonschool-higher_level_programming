@@ -7,18 +7,26 @@ from flask_jwt_extended import (JWTManager, create_access_token,
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-
-app.config['JWT_SECRET_KEY'] = 'your_secret_key'
-
-jwt = JWTManager(app)
+# Config secret key for JWT
+app.config['JWT_SECRET_KEY'] = 'my_secret_key'
 auth = HTTPBasicAuth()
+jwt = JWTManager(app)
 
+# Users in memory
 users = {
-    "user1": {"username": "user1",
-              "password": generate_password_hash("password"), "role": "user"},
-    "admin1": {"username": "admin1",
-               "password": generate_password_hash("password"), "role": "admin"}
+    "user1": {
+        "username": "user1",
+        "password": generate_password_hash("password"),
+        "role": "user"
+    },
+    "admin1": {
+        "username": "admin1",
+        "password": generate_password_hash("password"),
+        "role": "admin"
+    }
 }
+
+# Basic Auth
 
 
 @auth.verify_password
@@ -34,21 +42,22 @@ def verify_password(username, password):
 def basic_protected():
     return "Basic Auth: Access Granted"
 
+# Connection route for JWT
+
 
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
-
     user = users.get(username)
     if user and check_password_hash(user['password'], password):
-        access_token = create_access_token(
-            identity={"username": username, "role": user['role']})
+        access_token = create_access_token(identity={'username': username,
+                                                     'role': user['role']})
+        return jsonify(access_token=access_token)
+    return jsonify({"error": "Invalid credentials"}), 401
 
-        return jsonify(access_token=access_token), 200
-    return jsonify({"error": "Unauthorized"}), 401
-
+# Route protected by JWT
 
 
 @app.route('/jwt-protected')
@@ -56,15 +65,18 @@ def login():
 def jwt_protected():
     return "JWT Auth: Access Granted"
 
+# Route protecter by role
+
 
 @app.route('/admin-only', methods=['GET'])
 @jwt_required()
 def admin_only():
     current_user = get_jwt_identity()
-
     if current_user['role'] != 'admin':
-        return jsonify({"error": "Forbidden"}), 403
+        return jsonify({"error": "Admin access required"}), 403
     return "Admin Access: Granted"
+
+# Unitest
 
 
 @jwt.unauthorized_loader
