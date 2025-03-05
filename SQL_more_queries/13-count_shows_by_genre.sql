@@ -1,7 +1,4 @@
--- 13. Number of shows by genre
--- Lists all genres with the number of shows linked to each from the hbtn_0d_tvshows database.
--- Only genres with at least one associated TV show are displayed.
--- The output displays two columns: genre and number_of_shows, sorted in descending order by number_of_shows.
+-- Write a script that lists all genres from hbtn_0d_tvshows and displays the number of shows linked to each.
 
 SELECT
     G.NAME AS genre,
