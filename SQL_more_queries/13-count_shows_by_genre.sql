@@ -1,15 +1,12 @@
 -- 13. Number of shows by genre
--- Lists all genres from hbtn_0d_tvshows with the number of TV shows linked to each.
--- Only genres with at least one associated TV show are displayed.
--- The output displays two columns: genre and number_of_shows.
--- Results are sorted in descending order by number_of_shows,
--- and in case of tie, by the genre ID in ascending order.
-
+-- Lists all genres from the hbtn_0d_tvshows database with the number of associated TV shows.
+-- Only genres with at least one TV show are displayed.
+-- The output displays two columns: genre and number_of_shows,
+-- sorted in descending order by the number of shows.
 SELECT
-    g.name AS genre,
-    COUNT(tg.tv_show_id) AS number_of_shows
-FROM genres AS g
-INNER JOIN tv_show_genres AS tg ON g.id = tg.genre_id
-GROUP BY g.id
-HAVING COUNT(tg.tv_show_id) > 0
-ORDER BY number_of_shows DESC, g.id ASC;
+    genres.name AS genre,
+    COUNT(tv_show_genres.tv_show_id) AS number_of_shows
+FROM genres
+INNER JOIN tv_show_genres ON genres.id = tv_show_genres.genre_id
+GROUP BY genres.id
+ORDER BY number_of_shows DESC;
